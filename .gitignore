@@ -50,6 +50,9 @@ coverage.xml
 *.mo
 *.pot
 
+# Database
+db.sqlite3
+
 # Django stuff:
 staticfiles/
 
