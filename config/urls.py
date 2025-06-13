@@ -15,6 +15,30 @@ urlpatterns = [
     ),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
+    # about local app
+    path(
+        "about_app/",
+        include(
+            "masjdna.about.urls",
+            namespace="about_app",
+        ),
+    ),
+    # services local app
+    path(
+        "services_app/",
+        include(
+            "masjdna.services.urls",
+            namespace="services_app",
+        ),
+    ),
+    # activities local app
+    path(
+        "activities_app/",
+        include(
+            "masjdna.activities.urls",
+            namespace="activities_app",
+        ),
+    ),
     # User management
     path("users/", include("masjdna.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),

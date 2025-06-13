@@ -10,7 +10,6 @@ class BaseModel(models.Model):
     updated_at = models.DateTimeField(
         verbose_name=_("updated at"),
         auto_now=True,
-        auto_now_add=True,
     )
 
     class Meta:

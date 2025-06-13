@@ -7,13 +7,13 @@ from masjdna.common.models import AbstractUUIDField
 from masjdna.common.models import BaseModel
 
 
-class About(
+class Services(
     BaseModel,
     AbstractUUIDField,
     AbstractSiteFK,
     AbstractImageLinkField,
 ):
-    intro = models.TextField(verbose_name=_("Intro"))
+    description = models.TextField(verbose_name=_("Service Description"))
 
     class Meta:
-        verbose_name = _("About")
+        verbose_name = _("Services")

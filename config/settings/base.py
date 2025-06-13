@@ -89,6 +89,9 @@ LOCAL_APPS = [
     "masjdna.users",
     "common",
     "about",
+    "services",
+    "activities",
+    "social_media",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
