@@ -44,7 +44,7 @@ http:
     flower-secure-router:
       rule: 'Host(`flower.masjdna.com`)'
       entryPoints:
-        - flower
+        - web-secure
       service: flower
       tls:
         # https://doc.traefik.io/traefik/master/routing/routers/#certresolver
