@@ -45,6 +45,42 @@ To run the tests, check your test coverage, and generate an HTML coverage report
 
 Moved to [Live reloading and SASS compilation](https://cookiecutter-django.readthedocs.io/en/latest/2-local-development/developing-locally.html#using-webpack-or-gulp).
 
+### Celery
+
+This app comes with Celery.
+
+To run a celery worker:
+
+```bash
+cd masjdna
+celery -A config.celery_app worker -l info
+```
+
+Please note: For Celery's import magic to work, it is important _where_ the celery commands are run. If you are in the same folder with _manage.py_, you should be right.
+
+To run [periodic tasks](https://docs.celeryq.dev/en/stable/userguide/periodic-tasks.html), you'll need to start the celery beat scheduler service. You can start it as a standalone process:
+
+```bash
+cd masjdna
+celery -A config.celery_app beat
+```
+
+or you can embed the beat service inside a worker with the `-B` option (not recommended for production use):
+
+```bash
+cd masjdna
+celery -A config.celery_app worker -B -l info
+```
+
+### Email Server
+
+In development, it is often nice to be able to see emails that are being sent from your application. For that reason local SMTP server [Mailpit](https://github.com/axllent/mailpit) with a web interface is available as docker container.
+
+Container mailpit will start automatically when you will run all docker containers.
+Please check [cookiecutter-django Docker documentation](https://cookiecutter-django.readthedocs.io/en/latest/2-local-development/developing-locally-docker.html) for more details how to start all containers.
+
+With Mailpit running, to view messages that are sent by your application, open your browser and go to `http://127.0.0.1:8025`
+
 ## Deployment
 
 The following details how to deploy this application.

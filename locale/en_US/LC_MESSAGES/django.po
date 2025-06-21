@@ -1,6 +1,6 @@
 # Translations for the Masjdna project
 # Copyright (C) 2025 Maamoun Haj Najeeb && Abdulkhalek Muhammed
-# Maamoun Haj Najeeb && Abdulkhalek Muhammed <maamoun.haj.najeeb@gmail.com>, 2025.
+# Maamoun Haj Najeeb && Abdulkhalek Muhammed <abdulkhalek.muhammad.work@gmail.com>, 2025.
 #
 #, fuzzy
 msgid ""
