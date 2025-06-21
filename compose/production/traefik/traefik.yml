@@ -31,7 +31,7 @@ certificatesResolvers:
 http:
   routers:
     web-secure-router:
-      rule: 'Host(`masjdna.com`) || Host(`www.masjdna.com`)'
+      rule: 'Host(`masjdna.com`) || Host(`www.masjdna.com`) || HostRegexp(`^.+\.masjdna.com$`)'
       entryPoints:
         - web-secure
       middlewares:
@@ -49,16 +49,6 @@ http:
       tls:
         # https://doc.traefik.io/traefik/master/routing/routers/#certresolver
         certResolver: letsencrypt
-
-    catchall-secure-router:
-      rule: 'HostRegexp(`{subdomain:.+}.masjdna.com`)'
-      entryPoints: [web-secure]
-      service: django
-      tls:
-        certResolver: letsencrypt
-        domains:
-          - main: "*.masjdna.com"
-            sans: ["masjdna.com"]
 
     web-media-router:
       rule: '(Host(`masjdna.com`) || Host(`www.masjdna.com`)) && PathPrefix(`/media/`)'
