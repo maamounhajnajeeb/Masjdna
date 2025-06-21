@@ -25,8 +25,8 @@ certificatesResolvers:
       email: 'abdulkhalek.muhammad.work@gmail.com'
       storage: /etc/traefik/acme/acme.json
       # https://doc.traefik.io/traefik/https/acme/#httpchallenge
-      httpChallenge:
-        entryPoint: web
+      dnsChallenge:
+        provider: namesilo
 
 http:
   routers:
@@ -52,12 +52,13 @@ http:
 
     catchall-secure-router:
       rule: 'HostRegexp(`{subdomain:.+}.masjdna.com`)'
-      entryPoints:
-        - web-secure
+      entryPoints: [web-secure]
       service: django
-      priority: 1
       tls:
         certResolver: letsencrypt
+        domains:
+          - main: "*.masjdna.com"
+            sans: ["masjdna.com"]
 
     web-media-router:
       rule: '(Host(`masjdna.com`) || Host(`www.masjdna.com`)) && PathPrefix(`/media/`)'
