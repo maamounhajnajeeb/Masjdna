@@ -1,0 +1,23 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: SSH into server and Deploy
+      uses: appleboy/ssh-action@v1.2.1
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
+        script: |
+          mkdir -p ~/Masjdna
+          cd ~/Masjdna
+          git pull origin main
+          docker compose -f ./docker-compose.production.yml up --build -d
