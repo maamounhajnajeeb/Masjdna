@@ -42,12 +42,21 @@ http:
         certResolver: letsencrypt
 
     flower-secure-router:
-      rule: 'Host(`masjdna.com`)'
+      rule: 'Host(`flower.kaleem.academy`)'
       entryPoints:
         - flower
       service: flower
       tls:
         # https://doc.traefik.io/traefik/master/routing/routers/#certresolver
+        certResolver: letsencrypt
+
+    catchall-secure-router:
+      rule: 'HostRegexp(`{subdomain:.+}.masjdna.academy`)'
+      entryPoints:
+        - web-secure
+      service: django
+      priority: 1
+      tls:
         certResolver: letsencrypt
 
     web-media-router:
