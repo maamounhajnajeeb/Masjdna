@@ -26,7 +26,7 @@ certificatesResolvers:
       storage: /etc/traefik/acme/acme.json
       # https://doc.traefik.io/traefik/https/acme/#httpchallenge
       dnsChallenge:
-        provider: namesilo
+        provider: spaceship
 
 http:
   routers:
