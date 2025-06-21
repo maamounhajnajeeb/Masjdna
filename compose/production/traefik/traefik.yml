@@ -42,7 +42,7 @@ http:
         certResolver: letsencrypt
 
     flower-secure-router:
-      rule: 'Host(`flower.kaleem.academy`)'
+      rule: 'Host(`flower.masjdna.com`)'
       entryPoints:
         - flower
       service: flower
@@ -51,7 +51,7 @@ http:
         certResolver: letsencrypt
 
     catchall-secure-router:
-      rule: 'HostRegexp(`{subdomain:.+}.masjdna.academy`)'
+      rule: 'HostRegexp(`{subdomain:.+}.masjdna.com`)'
       entryPoints:
         - web-secure
       service: django
